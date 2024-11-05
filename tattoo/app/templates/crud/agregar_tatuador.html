@@ -1,0 +1,11 @@
+{%extends 'app/index.html'%}
+
+{%block content%}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<div class="alert alert-infro display-1 text-center">Agregar tatuador</div>
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">Guardar</button>
+</form>
+{%endblock%}

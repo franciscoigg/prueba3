@@ -1,0 +1,37 @@
+{%extends 'app/index.html'%}
+
+{%block content%}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<div class="alert alert-infro display-1 text-center">Lista tatuadores</div>
+{%if tatuadores%}
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>nombre</th>
+                <th>experiencia</th>
+                <th>estilo</th>
+                <th>email</th>
+                <th>telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for tatuador in tatuadores%}
+            <tr>
+                <td>{{tatuador.nombre}}</td>
+                <td>{{tatuador.experiencia}}</td>
+                <td>{{tatuador.estilo}}</td>
+                <td>{{tatuador.email}}</td>
+                <td>{{tatuador.telefono}}</td>
+                <td><a href="{% url 'eliminar_tatuador' tatuador.id_tatuador %}" class="btn btn-danger"><i class="bi bi-trash"></i></td>
+                <td><a href="{% url 'actualizar_tatuador' tatuador.id_tatuador %}" class="btn btn-success"><i class="bi bi-pencil"></i></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+{%else%}
+<div>
+    <strong>no hay datos</strong>
+</div>
+{%endif%}
+
+{%endblock%}

@@ -1,0 +1,40 @@
+{%extends 'app/index.html'%}
+
+{%block content%}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<div class="alert alert-infro display-1 text-center">Lista cita</div>
+{%if citas%}
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>tatuador</th>
+                <th>cliente</th>
+                <th>fecha_cita</th>
+                <th>estado</th>
+                <th>duracion</th>
+                <th>descripcion</th>
+                <th>hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for cita in citas%}
+            <tr>
+                <td>{{cita.id_tatuador}}</td>
+                <td>{{cita.id_cliente}}</td>
+                <td>{{cita.fecha_cita}}</td>
+                <td>{{cita.estado}}</td>
+                <td>{{cita.duracion}}</td>
+                <td>{{cita.descripcion}}</td>
+                <td>{{cita.hora}}</td>
+                <td><a href="{% url 'eliminar_cita' cita.id_cita %}" class="btn btn-danger"><i class="bi bi-trash"></i></td>
+                <td><a href="{% url 'actualizar_cita' cita.id_cita %}" class="btn btn-success"><i class="bi bi-pencil"></i></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    {%else%}
+    <div>
+        <strong>no hay citas</strong>
+    </div>
+{%endif%}   
+{%endblock%}
